@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from "react";
+import { MainContext } from "./context/MainContext";
 
 function App() {
+  const { people, setPeople } = useContext(MainContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {people.map((person) => (
+        <div className="person">
+          <h1>Name: {person.name}</h1>
+          <h2>Age: {person.age}</h2>
+          <h3>Is above 20? {person.aboveTwenty ? "Yes" : "No"}</h3>
+        </div>
+      ))}
     </div>
   );
 }
